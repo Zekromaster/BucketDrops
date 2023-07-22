@@ -1,5 +1,10 @@
 package net.zekromaster.games.bucketdrops;
 
+import lombok.Getter;
+import lombok.experimental.Accessors;
+
+@Getter
+@Accessors(fluent = true)
 public enum Direction {
     LEFT(-1),
     RIGHT(+1);
@@ -10,7 +15,4 @@ public enum Direction {
         this.value = value;
     }
 
-    public int getValue() {
-        return value;
-    }
 }

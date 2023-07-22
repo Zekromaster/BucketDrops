@@ -64,7 +64,7 @@ public class PlayerControlSystem extends EntitySystem {
         int rightBoundary,
         float deltaTime
     ) {
-        final var potentialX = startingPosition.x() + (direction.getValue() * horizontalMovement.speed() * deltaTime);
+        final var potentialX = startingPosition.x() + (direction.value() * horizontalMovement.speed() * deltaTime);
         if (potentialX < leftBoundary) {
             return startingPosition.withX(leftBoundary);
         }

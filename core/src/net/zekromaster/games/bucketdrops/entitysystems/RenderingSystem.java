@@ -21,7 +21,7 @@ public class RenderingSystem extends IteratingSystem {
     private SpriteBatch batch;
     private OrthographicCamera camera;
     private BitmapFont font;
-    private Entity gameState;
+    private final Entity gameState;
 
     @Inject
     public RenderingSystem(
