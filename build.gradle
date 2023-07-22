@@ -9,13 +9,13 @@ buildscript {
         google()
     }
     dependencies {
-        
-
+        classpath "io.freefair.gradle:lombok-plugin:8.1.0"
     }
 }
 
 allprojects {
     apply plugin: "eclipse"
+    apply plugin: "io.freefair.lombok"
 
     version = '1.0'
     ext {
@@ -45,6 +45,7 @@ project(":desktop") {
 
     dependencies {
         implementation project(":core")
+        api "javax.inject:javax.inject:1"
         api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         api "com.badlogicgames.gdx-controllers:gdx-controllers-desktop:$gdxControllersVersion"
@@ -56,8 +57,11 @@ project(":desktop") {
 project(":core") {
     apply plugin: "java-library"
 
-
     dependencies {
+        implementation 'com.google.code.gson:gson:2.10.1'
+        implementation 'io.github.classgraph:classgraph:4.8.161'
+        api "javax.inject:javax.inject:1"
+        api "com.google.inject:guice:6.0.0"
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion"
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"

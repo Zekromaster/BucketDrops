@@ -2,14 +2,23 @@ package net.zekromaster.games.gdxpong;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import net.zekromaster.games.gdxpong.GdxPong;
+import com.google.inject.Guice;
 
-// Please note that on macOS your application needs to be started with the -XstartOnFirstThread JVM argument
 public class DesktopLauncher {
+
 	public static void main (String[] arg) {
+		final var injector = Guice.createInjector(
+			new GuiceHandler()
+		);
+
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(60);
 		config.setTitle("GdxPong");
-		new Lwjgl3Application(new GdxPong(), config);
+		config.setWindowedMode(720, 480);
+		config.useVsync(true);
+		new Lwjgl3Application(
+			injector.getInstance(GdxPong.class),
+			config
+		);
 	}
 }
