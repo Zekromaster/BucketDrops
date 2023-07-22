@@ -1,4 +1,4 @@
-package net.zekromaster.games.gdxpong.entitysystems;
+package net.zekromaster.games.bucketdrops.entitysystems;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,5 +7,5 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface GdxPongSystem {
+public @interface BucketDropsSystem {
 }

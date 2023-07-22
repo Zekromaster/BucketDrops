@@ -2,7 +2,7 @@ sourceCompatibility = 17
 sourceSets.main.java.srcDirs = [ "src/" ]
 sourceSets.main.resources.srcDirs = ["../assets"]
 
-project.ext.mainClassName = "net.zekromaster.games.gdxpong.DesktopLauncher"
+project.ext.mainClassName = "net.zekromaster.games.bucketdrops.DesktopLauncher"
 project.ext.assetsDir = new File("../assets")
 
 import org.gradle.internal.os.OperatingSystem

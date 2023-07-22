@@ -1,4 +1,4 @@
-package net.zekromaster.games.gdxpong;
+package net.zekromaster.games.bucketdrops;
 
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
@@ -8,10 +8,10 @@ import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.inject.multibindings.Multibinder;
 import io.github.classgraph.ClassGraph;
-import net.zekromaster.games.gdxpong.entitysystems.GdxPongSystem;
-import net.zekromaster.games.gdxpong.gamestate.GameState;
-import net.zekromaster.games.gdxpong.gamestate.Player;
-import net.zekromaster.games.gdxpong.gamestate.ScoreComponent;
+import net.zekromaster.games.bucketdrops.entitysystems.BucketDropsSystem;
+import net.zekromaster.games.bucketdrops.gamestate.GameState;
+import net.zekromaster.games.bucketdrops.gamestate.Player;
+import net.zekromaster.games.bucketdrops.gamestate.ScoreComponent;
 
 public class GuiceHandler extends AbstractModule {
 
@@ -23,10 +23,10 @@ public class GuiceHandler extends AbstractModule {
         Multibinder<EntitySystem> entitySystemBinder = Multibinder.newSetBinder(binder(), EntitySystem.class);
 
         new ClassGraph().enableClassInfo().enableAnnotationInfo()
-            .acceptPackages("net.zekromaster.games.gdxpong")
+            .acceptPackages("net.zekromaster.games.bucketdrops")
             .scan()
             .getSubclasses(EntitySystem.class)
-            .filter(classInfo -> classInfo.hasAnnotation(GdxPongSystem.class))
+            .filter(classInfo -> classInfo.hasAnnotation(BucketDropsSystem.class))
             .loadClasses(EntitySystem.class)
             .forEach(
                 loadedClass -> entitySystemBinder.addBinding().to((loadedClass))

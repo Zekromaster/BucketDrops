@@ -1,4 +1,4 @@
-package net.zekromaster.games.gdxpong.gamestate;
+package net.zekromaster.games.bucketdrops.gamestate;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.ComponentMapper;

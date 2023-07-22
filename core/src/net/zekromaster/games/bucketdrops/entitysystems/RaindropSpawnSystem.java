@@ -1,17 +1,17 @@
-package net.zekromaster.games.gdxpong.entitysystems;
+package net.zekromaster.games.bucketdrops.entitysystems;
 
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.systems.IntervalSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.MathUtils;
-import net.zekromaster.games.gdxpong.raindrops.RaindropFactory;
-import net.zekromaster.games.gdxpong.raindrops.RaindropType;
+import net.zekromaster.games.bucketdrops.raindrops.RaindropFactory;
+import net.zekromaster.games.bucketdrops.raindrops.RaindropType;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-@Singleton @GdxPongSystem
+@Singleton @BucketDropsSystem
 public class RaindropSpawnSystem extends IntervalSystem {
 
     private final RaindropFactory raindropFactory;

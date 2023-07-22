@@ -1,9 +1,9 @@
-package net.zekromaster.games.gdxpong.components;
+package net.zekromaster.games.bucketdrops.components;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.gdx.audio.Sound;
-import net.zekromaster.games.gdxpong.raindrops.HitEffect;
+import net.zekromaster.games.bucketdrops.raindrops.HitEffect;
 
 public record HitComponent(
     HitEffect effect,

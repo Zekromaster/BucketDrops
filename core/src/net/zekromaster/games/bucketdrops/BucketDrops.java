@@ -1,4 +1,4 @@
-package net.zekromaster.games.gdxpong;
+package net.zekromaster.games.bucketdrops;
 
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
@@ -9,21 +9,21 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.google.inject.Inject;
-import net.zekromaster.games.gdxpong.components.HitComponent;
-import net.zekromaster.games.gdxpong.components.HorizontalMoverComponent;
-import net.zekromaster.games.gdxpong.components.PositionComponent;
-import net.zekromaster.games.gdxpong.components.RenderableComponent;
-import net.zekromaster.games.gdxpong.gamestate.Player;
+import net.zekromaster.games.bucketdrops.components.HitComponent;
+import net.zekromaster.games.bucketdrops.components.HorizontalMoverComponent;
+import net.zekromaster.games.bucketdrops.components.PositionComponent;
+import net.zekromaster.games.bucketdrops.components.RenderableComponent;
+import net.zekromaster.games.bucketdrops.gamestate.Player;
 import java.util.Set;
 
-public class GdxPong extends ApplicationAdapter {
+public class BucketDrops extends ApplicationAdapter {
 	private final Engine engine;
 	private final Set<EntitySystem> systems;
 	private final Entity player;
 	private Music music;
 
 	@Inject
-	public GdxPong(
+	public BucketDrops(
 		Engine engine,
 		Set<EntitySystem> systems,
 		@Player Entity player

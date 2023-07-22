@@ -1,4 +1,4 @@
-package net.zekromaster.games.gdxpong.raindrops;
+package net.zekromaster.games.bucketdrops.raindrops;
 
 import com.badlogic.gdx.math.MathUtils;
 import lombok.Getter;

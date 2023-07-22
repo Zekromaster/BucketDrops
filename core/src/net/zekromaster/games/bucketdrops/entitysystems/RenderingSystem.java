@@ -1,4 +1,4 @@
-package net.zekromaster.games.gdxpong.entitysystems;
+package net.zekromaster.games.bucketdrops.entitysystems;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
@@ -10,12 +10,12 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import net.zekromaster.games.gdxpong.components.PositionComponent;
-import net.zekromaster.games.gdxpong.components.RenderableComponent;
-import net.zekromaster.games.gdxpong.gamestate.GameState;
-import net.zekromaster.games.gdxpong.gamestate.ScoreComponent;
+import net.zekromaster.games.bucketdrops.components.PositionComponent;
+import net.zekromaster.games.bucketdrops.components.RenderableComponent;
+import net.zekromaster.games.bucketdrops.gamestate.GameState;
+import net.zekromaster.games.bucketdrops.gamestate.ScoreComponent;
 
-@Singleton @GdxPongSystem
+@Singleton @BucketDropsSystem
 public class RenderingSystem extends IteratingSystem {
 
     private SpriteBatch batch;

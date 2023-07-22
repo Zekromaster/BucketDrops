@@ -1,4 +1,4 @@
-package net.zekromaster.games.gdxpong.gamestate;
+package net.zekromaster.games.bucketdrops.gamestate;
 
 import javax.inject.Qualifier;
 import java.lang.annotation.Retention;
@@ -10,5 +10,5 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Qualifier
 @Target({ FIELD, PARAMETER, METHOD })
 @Retention(RUNTIME)
-public @interface Player {
+public @interface GameState {
 }

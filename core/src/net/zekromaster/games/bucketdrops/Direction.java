@@ -1,4 +1,4 @@
-package net.zekromaster.games.gdxpong;
+package net.zekromaster.games.bucketdrops;
 
 public enum Direction {
     LEFT(-1),

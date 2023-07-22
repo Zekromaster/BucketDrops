@@ -1,12 +1,12 @@
-package net.zekromaster.games.gdxpong.raindrops;
+package net.zekromaster.games.bucketdrops.raindrops;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
-import net.zekromaster.games.gdxpong.components.FallingComponent;
-import net.zekromaster.games.gdxpong.components.HitComponent;
-import net.zekromaster.games.gdxpong.components.PositionComponent;
-import net.zekromaster.games.gdxpong.components.RenderableComponent;
+import net.zekromaster.games.bucketdrops.components.FallingComponent;
+import net.zekromaster.games.bucketdrops.components.HitComponent;
+import net.zekromaster.games.bucketdrops.components.PositionComponent;
+import net.zekromaster.games.bucketdrops.components.RenderableComponent;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

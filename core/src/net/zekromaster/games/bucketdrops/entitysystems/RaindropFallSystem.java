@@ -1,16 +1,16 @@
-package net.zekromaster.games.gdxpong.entitysystems;
+package net.zekromaster.games.bucketdrops.entitysystems;
 
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import net.zekromaster.games.gdxpong.components.PositionComponent;
-import net.zekromaster.games.gdxpong.components.FallingComponent;
+import net.zekromaster.games.bucketdrops.components.PositionComponent;
+import net.zekromaster.games.bucketdrops.components.FallingComponent;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-@Singleton @GdxPongSystem
+@Singleton @BucketDropsSystem
 public class RaindropFallSystem extends IteratingSystem {
 
     private final Engine engine;

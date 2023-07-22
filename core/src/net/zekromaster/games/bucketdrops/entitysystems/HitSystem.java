@@ -1,21 +1,21 @@
-package net.zekromaster.games.gdxpong.entitysystems;
+package net.zekromaster.games.bucketdrops.entitysystems;
 
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import net.zekromaster.games.gdxpong.components.HitComponent;
-import net.zekromaster.games.gdxpong.components.PositionComponent;
-import net.zekromaster.games.gdxpong.gamestate.GameState;
-import net.zekromaster.games.gdxpong.gamestate.Player;
-import net.zekromaster.games.gdxpong.gamestate.ScoreComponent;
-import net.zekromaster.games.gdxpong.raindrops.HitEffect;
+import net.zekromaster.games.bucketdrops.components.HitComponent;
+import net.zekromaster.games.bucketdrops.components.PositionComponent;
+import net.zekromaster.games.bucketdrops.gamestate.GameState;
+import net.zekromaster.games.bucketdrops.gamestate.Player;
+import net.zekromaster.games.bucketdrops.gamestate.ScoreComponent;
+import net.zekromaster.games.bucketdrops.raindrops.HitEffect;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.Objects;
 
-@Singleton @GdxPongSystem
+@Singleton @BucketDropsSystem
 public class HitSystem extends IteratingSystem {
 
     private final Engine engine;

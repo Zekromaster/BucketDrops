@@ -1,18 +1,18 @@
-package net.zekromaster.games.gdxpong.entitysystems;
+package net.zekromaster.games.bucketdrops.entitysystems;
 
 import com.badlogic.ashley.core.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import net.zekromaster.games.gdxpong.Direction;
-import net.zekromaster.games.gdxpong.components.HorizontalMoverComponent;
-import net.zekromaster.games.gdxpong.components.PositionComponent;
-import net.zekromaster.games.gdxpong.gamestate.Player;
+import net.zekromaster.games.bucketdrops.Direction;
+import net.zekromaster.games.bucketdrops.components.HorizontalMoverComponent;
+import net.zekromaster.games.bucketdrops.components.PositionComponent;
+import net.zekromaster.games.bucketdrops.gamestate.Player;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.Optional;
 
-@Singleton @GdxPongSystem
+@Singleton @BucketDropsSystem
 public class PlayerControlSystem extends EntitySystem {
 
     private final Entity player;
