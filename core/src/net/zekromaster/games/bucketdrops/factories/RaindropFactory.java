@@ -6,13 +6,21 @@ import net.zekromaster.games.bucketdrops.enums.BucketColor;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Singleton
 public class RaindropFactory {
 
+    private final Map<BucketColor, RenderableComponent> renderableComponentCache;
+    private final Map<BucketColor, RaindropComponent> raindropComponentFache;
+
+    private static final CatchableComponent RAINDROP_CATCHABLE_COMPONENT = new CatchableComponent("get.wav");
+
     @Inject
     public RaindropFactory() {
-        // Default blank constructor
+        this.renderableComponentCache = new LinkedHashMap<>();
+        this.raindropComponentFache = new LinkedHashMap<>();
     }
 
     public Entity createRaindrop(
@@ -21,10 +29,12 @@ public class RaindropFactory {
         int speed,
         BucketColor color
     ) {
+
         final var raindrop = new Entity();
         raindrop.add(
-            new RaindropComponent(
-                color
+            this.raindropComponentFache.computeIfAbsent(
+                color,
+                RaindropComponent::new
             )
         );
         raindrop.add(
@@ -36,18 +46,15 @@ public class RaindropFactory {
             )
         );
         raindrop.add(
-            new RenderableComponent(
-                color.dropTexture()
+            this.renderableComponentCache.computeIfAbsent(
+                color,
+                (BucketColor bucketColor) -> new RenderableComponent(bucketColor.dropTexture())
             )
         );
         raindrop.add(
             new FallingComponent(speed)
         );
-        raindrop.add(
-            new CatchableComponent(
-                "get.wav"
-            )
-        );
+        raindrop.add(RAINDROP_CATCHABLE_COMPONENT);
 
         return raindrop;
     }

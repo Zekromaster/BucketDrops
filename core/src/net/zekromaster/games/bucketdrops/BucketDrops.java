@@ -51,7 +51,7 @@ public class BucketDrops extends ApplicationAdapter {
 		player.add(new HorizontalMoverComponent(
 			200
 		));
-		player.add(new UntexturedTagComponent());
+		player.add(UntexturedTagComponent.INSTANCE);
 		player.add(
 			new InputComponent(BucketInput.NONE)
 		);

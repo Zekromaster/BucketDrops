@@ -9,5 +9,4 @@ public record FallingComponent(
 
     public static ComponentMapper<FallingComponent> MAPPER = ComponentMapper.getFor(FallingComponent.class);
 
-
 }
