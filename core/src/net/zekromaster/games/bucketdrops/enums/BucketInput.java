@@ -1,4 +1,4 @@
-package net.zekromaster.games.bucketdrops.gamestate;
+package net.zekromaster.games.bucketdrops.enums;
 
 public enum BucketInput {
     LEFT,

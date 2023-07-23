@@ -8,9 +8,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.google.inject.Inject;
 import net.zekromaster.games.bucketdrops.components.*;
+import net.zekromaster.games.bucketdrops.enums.BucketColor;
 import net.zekromaster.games.bucketdrops.frontend.SoundStore;
 import net.zekromaster.games.bucketdrops.frontend.TextureStore;
-import net.zekromaster.games.bucketdrops.gamestate.BucketInput;
+import net.zekromaster.games.bucketdrops.enums.BucketInput;
 import net.zekromaster.games.bucketdrops.gamestate.Player;
 import java.util.Set;
 
@@ -51,14 +52,17 @@ public class BucketDrops extends ApplicationAdapter {
 			200
 		));
 		player.add(new RenderableComponent(
-			"bucket.png"
+			"blue/bucket.png"
 		));
 		player.add(
 			new InputComponent(BucketInput.NONE)
 		);
+		player.add(
+			BucketComponent.init(BucketColor.BLUE)
+		);
 		engine.addEntity(player);
 
-		music = Gdx.audio.newMusic(Gdx.files.internal("music.mp3"));
+		music = Gdx.audio.newMusic(Gdx.files.internal("music/music.mp3"));
 		music.setLooping(true);
 		music.play();
 	}

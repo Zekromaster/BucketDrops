@@ -16,7 +16,7 @@ public class TextureStore extends BasicStore<Texture> {
 
     @Override
     protected Texture defaultGenerator(String name) {
-        return new Texture(Gdx.files.internal(name));
+        return new Texture(Gdx.files.internal("textures/" + name));
     }
 
     @Override

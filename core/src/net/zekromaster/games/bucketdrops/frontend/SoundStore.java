@@ -11,7 +11,7 @@ public class SoundStore extends BasicStore<Sound> {
 
     @Override
     protected Sound defaultGenerator(String name) {
-        return Gdx.audio.newSound(Gdx.files.internal(name));
+        return Gdx.audio.newSound(Gdx.files.internal("sounds/" + name));
     }
 
     @Override

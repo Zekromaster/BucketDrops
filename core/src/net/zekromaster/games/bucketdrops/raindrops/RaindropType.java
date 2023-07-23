@@ -7,8 +7,8 @@ import lombok.experimental.Accessors;
 @Getter
 @Accessors(fluent = true)
 public enum RaindropType {
-    GOOD("drop.png", "get.wav", 200, HitEffect.GAIN_POINTS, 10),
-    EVIL("evil_drop.png", "get.wav", 250, HitEffect.GAIN_POINTS, -5);
+    GOOD("blue/drop.png", "get.wav", 200, HitEffect.GAIN_POINTS, 10),
+    EVIL("red/drop.png", "get.wav", 250, HitEffect.GAIN_POINTS, -5);
 
     private final String texture;
     private final String sound;

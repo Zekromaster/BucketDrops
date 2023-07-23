@@ -2,7 +2,7 @@ package net.zekromaster.games.bucketdrops.components;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.ComponentMapper;
-import net.zekromaster.games.bucketdrops.gamestate.BucketInput;
+import net.zekromaster.games.bucketdrops.enums.BucketInput;
 
 public record InputComponent(
     BucketInput pendingBucketInput

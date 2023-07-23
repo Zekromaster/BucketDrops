@@ -1,8 +1,7 @@
-package net.zekromaster.games.bucketdrops;
+package net.zekromaster.games.bucketdrops.enums;
 
 import lombok.Getter;
 import lombok.experimental.Accessors;
-import net.zekromaster.games.bucketdrops.gamestate.BucketInput;
 
 import java.util.Optional;
 

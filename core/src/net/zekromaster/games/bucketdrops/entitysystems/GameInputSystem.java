@@ -7,7 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import net.zekromaster.games.bucketdrops.components.InputComponent;
 import net.zekromaster.games.bucketdrops.components.PositionComponent;
-import net.zekromaster.games.bucketdrops.gamestate.BucketInput;
+import net.zekromaster.games.bucketdrops.enums.BucketInput;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
