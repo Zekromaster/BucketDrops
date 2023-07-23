@@ -7,7 +7,7 @@ import java.util.function.Function;
 
 public abstract class BasicStore<T> {
 
-    private Map<String, T> map;
+    private final Map<String, T> map;
 
     @Inject
     protected BasicStore() {
