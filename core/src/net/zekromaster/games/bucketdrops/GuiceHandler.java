@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.EntitySystem;
 import com.google.inject.AbstractModule;
+import com.google.inject.Key;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.inject.multibindings.Multibinder;
@@ -29,7 +30,7 @@ public class GuiceHandler extends AbstractModule {
             .filter(classInfo -> classInfo.hasAnnotation(BucketDropsSystem.class))
             .loadClasses(EntitySystem.class)
             .forEach(
-                loadedClass -> entitySystemBinder.addBinding().to((loadedClass))
+                loadedClass -> entitySystemBinder.addBinding().to((Key.get(loadedClass)))
             );
     }
 

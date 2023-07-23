@@ -1,43 +1,34 @@
 package net.zekromaster.games.bucketdrops.entitysystems;
 
 import com.badlogic.ashley.core.*;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
+import com.badlogic.ashley.systems.IteratingSystem;
 import net.zekromaster.games.bucketdrops.Direction;
 import net.zekromaster.games.bucketdrops.components.HorizontalMoverComponent;
+import net.zekromaster.games.bucketdrops.components.InputComponent;
 import net.zekromaster.games.bucketdrops.components.PositionComponent;
-import net.zekromaster.games.bucketdrops.gamestate.Player;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.Optional;
 
 @Singleton @BucketDropsSystem
-public class PlayerControlSystem extends EntitySystem {
-
-    private final Entity player;
+public class CharacterMovementSystem extends IteratingSystem {
 
     @Inject
-    public PlayerControlSystem(
-        @Player Entity player
-    ) {
-        this.player = player;
+    public CharacterMovementSystem() {
+        super(
+            Family.all(InputComponent.class, HorizontalMoverComponent.class, PositionComponent.class).get(),
+            1
+        );
     }
 
     @Override
-    public void update(float deltaTime) {
-        final var position = PositionComponent.MAPPER.get(player);
-        final var horizontalMovement = HorizontalMoverComponent.MAPPER.get(player);
+    public void processEntity(Entity entity, float deltaTime) {
+        final var position = PositionComponent.MAPPER.get(entity);
+        final var horizontalMovement = HorizontalMoverComponent.MAPPER.get(entity);
+        final var input = InputComponent.MAPPER.get(entity);
 
-        Optional<Direction> moveDirection = Optional.empty();
-
-        if (Gdx.input.isTouched()) {
-            moveDirection = this.getSide(Gdx.input.getX(), position);
-        } else if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            moveDirection = Optional.of(Direction.LEFT);
-        } else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            moveDirection = Optional.of(Direction.RIGHT);
-        }
+        Optional<Direction> moveDirection = Direction.fromInput(input.pendingBucketInput());
 
         moveDirection.ifPresent(
             direction -> {
@@ -50,7 +41,7 @@ public class PlayerControlSystem extends EntitySystem {
                     deltaTime
                 );
 
-                player.add(newLocation);
+                entity.add(newLocation);
             }
         );
 
@@ -72,19 +63,5 @@ public class PlayerControlSystem extends EntitySystem {
             return startingPosition.withX((float) rightBoundary - 64);
         }
         return startingPosition.withX(potentialX);
-    }
-
-    private Optional<Direction> getSide(
-        int clickLocation,
-        PositionComponent position
-    ) {
-        final var center = position.x() + (position.width() / 2);
-        if (clickLocation > center + 4) {
-            return Optional.of(Direction.RIGHT);
-        }
-        if (clickLocation < center - 4) {
-            return Optional.of(Direction.LEFT);
-        }
-        return Optional.empty();
     }
 }

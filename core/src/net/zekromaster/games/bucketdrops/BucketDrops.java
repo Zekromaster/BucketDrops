@@ -9,10 +9,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.google.inject.Inject;
-import net.zekromaster.games.bucketdrops.components.HitComponent;
-import net.zekromaster.games.bucketdrops.components.HorizontalMoverComponent;
-import net.zekromaster.games.bucketdrops.components.PositionComponent;
-import net.zekromaster.games.bucketdrops.components.RenderableComponent;
+import net.zekromaster.games.bucketdrops.components.*;
+import net.zekromaster.games.bucketdrops.gamestate.BucketInput;
 import net.zekromaster.games.bucketdrops.gamestate.Player;
 import java.util.Set;
 
@@ -49,6 +47,9 @@ public class BucketDrops extends ApplicationAdapter {
 		player.add(new RenderableComponent(
 			new Texture(Gdx.files.internal("bucket.png"))
 		));
+		player.add(
+			new InputComponent(BucketInput.NONE)
+		);
 		engine.addEntity(player);
 
 		music = Gdx.audio.newMusic(Gdx.files.internal("music.mp3"));
