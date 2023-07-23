@@ -12,7 +12,7 @@ import net.zekromaster.games.bucketdrops.enums.BucketColor;
 import net.zekromaster.games.bucketdrops.frontend.SoundStore;
 import net.zekromaster.games.bucketdrops.frontend.TextureStore;
 import net.zekromaster.games.bucketdrops.enums.BucketInput;
-import net.zekromaster.games.bucketdrops.gamestate.Player;
+import net.zekromaster.games.bucketdrops.annotations.Player;
 import java.util.Set;
 
 public class BucketDrops extends ApplicationAdapter {

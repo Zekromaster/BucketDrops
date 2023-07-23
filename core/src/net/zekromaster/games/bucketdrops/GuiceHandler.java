@@ -9,10 +9,8 @@ import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.inject.multibindings.Multibinder;
 import io.github.classgraph.ClassGraph;
-import net.zekromaster.games.bucketdrops.entitysystems.BucketDropsSystem;
-import net.zekromaster.games.bucketdrops.gamestate.GameState;
-import net.zekromaster.games.bucketdrops.gamestate.Player;
-import net.zekromaster.games.bucketdrops.gamestate.ScoreComponent;
+import net.zekromaster.games.bucketdrops.annotations.BucketDropsSystem;
+import net.zekromaster.games.bucketdrops.annotations.Player;
 
 public class GuiceHandler extends AbstractModule {
 
@@ -32,15 +30,6 @@ public class GuiceHandler extends AbstractModule {
             .forEach(
                 loadedClass -> entitySystemBinder.addBinding().to((Key.get(loadedClass)))
             );
-    }
-
-    @Provides
-    @GameState
-    @Singleton
-    public Entity gameState() {
-        var gameStateEntity = new Entity();
-        gameStateEntity.add(new ScoreComponent(0));
-        return gameStateEntity;
     }
 
     @Provides

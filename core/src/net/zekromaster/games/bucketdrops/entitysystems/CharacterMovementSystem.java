@@ -2,6 +2,7 @@ package net.zekromaster.games.bucketdrops.entitysystems;
 
 import com.badlogic.ashley.core.*;
 import com.badlogic.ashley.systems.IteratingSystem;
+import net.zekromaster.games.bucketdrops.annotations.BucketDropsSystem;
 import net.zekromaster.games.bucketdrops.enums.Direction;
 import net.zekromaster.games.bucketdrops.components.HorizontalMoverComponent;
 import net.zekromaster.games.bucketdrops.components.InputComponent;

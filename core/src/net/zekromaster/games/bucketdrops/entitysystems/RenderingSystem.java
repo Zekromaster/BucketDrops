@@ -10,11 +10,12 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import net.zekromaster.games.bucketdrops.annotations.BucketDropsSystem;
+import net.zekromaster.games.bucketdrops.components.BucketComponent;
 import net.zekromaster.games.bucketdrops.components.PositionComponent;
 import net.zekromaster.games.bucketdrops.components.RenderableComponent;
 import net.zekromaster.games.bucketdrops.frontend.TextureStore;
-import net.zekromaster.games.bucketdrops.gamestate.GameState;
-import net.zekromaster.games.bucketdrops.gamestate.ScoreComponent;
+import net.zekromaster.games.bucketdrops.annotations.Player;
 
 @Singleton @BucketDropsSystem
 public class RenderingSystem extends IteratingSystem {
@@ -22,22 +23,22 @@ public class RenderingSystem extends IteratingSystem {
     private SpriteBatch batch;
     private OrthographicCamera camera;
     private BitmapFont font;
-    private final Entity gameState;
+    private final Entity player;
     private final TextureStore textureStore;
 
     @Inject
     public RenderingSystem(
         TextureStore textureStore,
-        @GameState Entity gameState
+        @Player Entity player
     ) {
         super(Family.all(PositionComponent.class, RenderableComponent.class).get());
         this.textureStore = textureStore;
-        this.gameState = gameState;
+        this.player = player;
     }
 
     @Override
     public void update(float deltaTime) {
-        var score = ScoreComponent.MAPPER.get(gameState).score();
+        var score = BucketComponent.MAPPER.get(player).score();
 
         ScreenUtils.clear(0, 0, 0.2f, 1);
 

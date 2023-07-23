@@ -1,4 +1,4 @@
-package net.zekromaster.games.bucketdrops.entitysystems;
+package net.zekromaster.games.bucketdrops.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
