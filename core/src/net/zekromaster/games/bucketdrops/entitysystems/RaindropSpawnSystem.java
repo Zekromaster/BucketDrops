@@ -4,9 +4,8 @@ import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.systems.IntervalSystem;
 import com.badlogic.gdx.math.MathUtils;
 import net.zekromaster.games.bucketdrops.annotations.BucketDropsSystem;
-import net.zekromaster.games.bucketdrops.raindrops.RaindropFactory;
-import net.zekromaster.games.bucketdrops.raindrops.RaindropType;
-
+import net.zekromaster.games.bucketdrops.enums.BucketColor;
+import net.zekromaster.games.bucketdrops.factories.RaindropFactory;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -33,9 +32,10 @@ public class RaindropSpawnSystem extends IntervalSystem {
 
     private void spawnRaindrop() {
         var raindrop = raindropFactory.createRaindrop(
-            RaindropType.random(),
             MathUtils.random(0, 656),
-            480
+            480,
+            MathUtils.random(180, 250),
+            BucketColor.random()
         );
         engine.addEntity(raindrop);
     }

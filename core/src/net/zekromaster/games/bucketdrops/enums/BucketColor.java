@@ -1,5 +1,6 @@
 package net.zekromaster.games.bucketdrops.enums;
 
+import com.badlogic.gdx.math.MathUtils;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 
@@ -17,5 +18,10 @@ public enum BucketColor {
     BucketColor(String colorName) {
         this.bucketTexture = colorName + "/bucket.png";
         this.dropTexture = colorName + "/drop.png";
+    }
+
+    public static BucketColor random() {
+        var values = values();
+        return values[MathUtils.random(values.length - 1)];
     }
 }

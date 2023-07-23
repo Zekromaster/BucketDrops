@@ -1,4 +1,4 @@
-package net.zekromaster.games.bucketdrops.entitysystems.movement;
+package net.zekromaster.games.bucketdrops.entitysystems.physics;
 
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;

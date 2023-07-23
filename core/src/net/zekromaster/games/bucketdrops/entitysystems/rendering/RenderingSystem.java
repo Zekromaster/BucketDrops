@@ -41,7 +41,9 @@ public class RenderingSystem extends IteratingSystem {
 
     @Override
     public void update(float deltaTime) {
-        var score = BucketComponent.MAPPER.get(player).score();
+        var state = BucketComponent.MAPPER.get(player);
+        var score = state.score();
+        var health = state.health();
 
         ScreenUtils.clear(0, 0, 0.2f, 1);
 
@@ -61,7 +63,7 @@ public class RenderingSystem extends IteratingSystem {
         batch.begin();
         batch.setProjectionMatrix(camera.combined);
         super.update(deltaTime);
-        font.draw(batch, String.format("Score: %d", score), 0, 480);
+        font.draw(batch, String.format("Score: %d -- Health: %d", score, health), 0, 480);
         batch.end();
     }
 
