@@ -12,14 +12,12 @@ import java.util.Map;
 @Singleton
 public class RaindropFactory {
 
-    private final Map<BucketColor, RenderableComponent> renderableComponentCache;
     private final Map<BucketColor, RaindropComponent> raindropComponentFache;
 
     private static final CatchableComponent RAINDROP_CATCHABLE_COMPONENT = new CatchableComponent("get.wav");
 
     @Inject
     public RaindropFactory() {
-        this.renderableComponentCache = new LinkedHashMap<>();
         this.raindropComponentFache = new LinkedHashMap<>();
     }
 
@@ -45,12 +43,7 @@ public class RaindropFactory {
                 64
             )
         );
-        raindrop.add(
-            this.renderableComponentCache.computeIfAbsent(
-                color,
-                (BucketColor bucketColor) -> new RenderableComponent(bucketColor.dropTexture())
-            )
-        );
+        raindrop.add(UntexturedTagComponent.INSTANCE);
         raindrop.add(
             new FallingComponent(speed)
         );
