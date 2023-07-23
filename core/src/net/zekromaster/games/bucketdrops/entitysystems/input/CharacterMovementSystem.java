@@ -1,4 +1,4 @@
-package net.zekromaster.games.bucketdrops.entitysystems;
+package net.zekromaster.games.bucketdrops.entitysystems.input;
 
 import com.badlogic.ashley.core.*;
 import com.badlogic.ashley.systems.IteratingSystem;

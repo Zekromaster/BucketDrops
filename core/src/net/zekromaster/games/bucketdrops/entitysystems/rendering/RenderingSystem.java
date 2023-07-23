@@ -1,4 +1,4 @@
-package net.zekromaster.games.bucketdrops.entitysystems;
+package net.zekromaster.games.bucketdrops.entitysystems.rendering;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
@@ -31,7 +31,10 @@ public class RenderingSystem extends IteratingSystem {
         TextureStore textureStore,
         @Player Entity player
     ) {
-        super(Family.all(PositionComponent.class, RenderableComponent.class).get());
+        super(
+            Family.all(PositionComponent.class, RenderableComponent.class).get(),
+            30
+        );
         this.textureStore = textureStore;
         this.player = player;
     }

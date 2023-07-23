@@ -1,4 +1,4 @@
-package net.zekromaster.games.bucketdrops.entitysystems;
+package net.zekromaster.games.bucketdrops.entitysystems.movement;
 
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
@@ -12,12 +12,12 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton @BucketDropsSystem
-public class RaindropFallSystem extends IteratingSystem {
+public class FallSystem extends IteratingSystem {
 
     private final Engine engine;
 
     @Inject
-    public RaindropFallSystem(
+    public FallSystem(
         Engine engine
     ) {
         super(

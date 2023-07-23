@@ -51,14 +51,12 @@ public class BucketDrops extends ApplicationAdapter {
 		player.add(new HorizontalMoverComponent(
 			200
 		));
-		player.add(new RenderableComponent(
-			"blue/bucket.png"
-		));
+		player.add(new UntexturedTagComponent());
 		player.add(
 			new InputComponent(BucketInput.NONE)
 		);
 		player.add(
-			BucketComponent.init(BucketColor.BLUE)
+			BucketComponent.init(BucketColor.RED)
 		);
 		engine.addEntity(player);
 
