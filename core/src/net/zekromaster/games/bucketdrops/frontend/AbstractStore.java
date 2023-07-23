@@ -33,6 +33,7 @@ abstract class AbstractStore<T> implements Store<T> {
 
     public void dispose() {
         map.values().forEach(this::disposeOfOne);
+        map.clear();
     }
 
 }

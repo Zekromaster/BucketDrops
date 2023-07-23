@@ -11,7 +11,8 @@ import net.zekromaster.games.bucketdrops.components.UntexturedTagComponent;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-@BucketDropsSystem @Singleton
+@Singleton
+@BucketDropsSystem
 public class BucketColorSettingSystem extends IteratingSystem {
 
     @Inject

@@ -14,7 +14,8 @@ import javax.inject.Singleton;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@BucketDropsSystem @Singleton
+@Singleton
+@BucketDropsSystem
 public class DropColorSettingSystem extends IteratingSystem {
 
     private final Map<BucketColor, RenderableComponent> renderableComponentCache;

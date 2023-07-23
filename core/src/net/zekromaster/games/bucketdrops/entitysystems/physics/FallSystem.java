@@ -11,7 +11,8 @@ import net.zekromaster.games.bucketdrops.components.FallingComponent;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-@Singleton @BucketDropsSystem
+@Singleton
+@BucketDropsSystem
 public class FallSystem extends IteratingSystem {
 
     private final Engine engine;

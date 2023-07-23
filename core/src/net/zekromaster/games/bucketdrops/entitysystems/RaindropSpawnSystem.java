@@ -9,7 +9,8 @@ import net.zekromaster.games.bucketdrops.factories.RaindropFactory;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-@Singleton @BucketDropsSystem
+@Singleton
+@BucketDropsSystem
 public class RaindropSpawnSystem extends IntervalSystem {
 
     private final RaindropFactory raindropFactory;

@@ -18,7 +18,8 @@ import net.zekromaster.games.bucketdrops.components.RenderableComponent;
 import net.zekromaster.games.bucketdrops.annotations.Player;
 import net.zekromaster.games.bucketdrops.frontend.Store;
 
-@Singleton @BucketDropsSystem
+@Singleton
+@BucketDropsSystem
 public class RenderingSystem extends IteratingSystem {
 
     private SpriteBatch batch;

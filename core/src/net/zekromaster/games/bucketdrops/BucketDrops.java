@@ -3,79 +3,47 @@ package net.zekromaster.games.bucketdrops;
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.EntitySystem;
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.Game;
 import com.google.inject.Inject;
-import net.zekromaster.games.bucketdrops.components.*;
-import net.zekromaster.games.bucketdrops.enums.BucketColor;
-import net.zekromaster.games.bucketdrops.frontend.Store;
-import net.zekromaster.games.bucketdrops.enums.BucketInput;
+import com.google.inject.Singleton;
 import net.zekromaster.games.bucketdrops.annotations.Player;
+import net.zekromaster.games.bucketdrops.screens.MainMenuScreen;
+import net.zekromaster.games.bucketdrops.screens.ScreenHandler;
+
 import java.util.Set;
 
-public class BucketDrops extends ApplicationAdapter {
+@Singleton
+public class BucketDrops extends Game {
+
+	private final ScreenHandler screenHandler;
 	private final Engine engine;
 	private final Set<EntitySystem> systems;
 	private final Entity player;
-	private Music music;
-	private final Store<Texture> textureStore;
-	private final Store<Sound> soundStore;
 
 	@Inject
 	public BucketDrops(
+		ScreenHandler screenHandler,
 		Engine engine,
 		Set<EntitySystem> systems,
-		Store<Texture> textureStore,
-		Store<Sound> soundStore,
 		@Player Entity player
 	) {
+		this.screenHandler = screenHandler;
 		this.engine = engine;
 		this.systems = systems;
 		this.player = player;
-		this.textureStore = textureStore;
-		this.soundStore = soundStore;
 	}
 
 	@Override
 	public void create () {
+		systems.forEach(
+			system -> system.setProcessing(false)
+		);
 		systems.forEach(engine::addSystem);
-
-		player.add(new PositionComponent(
-            328,
-			20,
-			64,
-			64
-		));
-		player.add(new HorizontalMoverComponent(
-			200
-		));
-		player.add(UntexturedTagComponent.INSTANCE);
-		player.add(
-			new InputComponent(BucketInput.NONE)
-		);
-		player.add(
-			BucketComponent.init(BucketColor.RED)
-		);
 		engine.addEntity(player);
 
-		music = Gdx.audio.newMusic(Gdx.files.internal("music/music.mp3"));
-		music.setLooping(true);
-		music.play();
-	}
 
-	@Override
-	public void render () {
-		engine.update(Gdx.graphics.getDeltaTime());
-	}
-	
-	@Override
-	public void dispose () {
-		textureStore.dispose();
-		soundStore.dispose();
-		music.dispose();
+		this.screenHandler.setGame(this);
+		this.screenHandler.switchScreen(MainMenuScreen.class);
 	}
 
 }

@@ -13,7 +13,8 @@ import net.zekromaster.games.bucketdrops.frontend.Store;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-@Singleton @BucketDropsSystem
+@Singleton
+@BucketDropsSystem
 public class CatchingSystem extends IteratingSystem {
 
     private final Engine engine;
