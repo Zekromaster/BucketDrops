@@ -3,7 +3,7 @@ package net.zekromaster.games.bucketdrops.frontend;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 
-public class SoundStore extends BasicStore<Sound> {
+public class SoundStore extends AbstractStore<Sound> {
 
     public SoundStore() {
         super();

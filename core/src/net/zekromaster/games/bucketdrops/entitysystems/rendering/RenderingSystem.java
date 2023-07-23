@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -14,8 +15,8 @@ import net.zekromaster.games.bucketdrops.annotations.BucketDropsSystem;
 import net.zekromaster.games.bucketdrops.components.BucketComponent;
 import net.zekromaster.games.bucketdrops.components.PositionComponent;
 import net.zekromaster.games.bucketdrops.components.RenderableComponent;
-import net.zekromaster.games.bucketdrops.frontend.TextureStore;
 import net.zekromaster.games.bucketdrops.annotations.Player;
+import net.zekromaster.games.bucketdrops.frontend.Store;
 
 @Singleton @BucketDropsSystem
 public class RenderingSystem extends IteratingSystem {
@@ -24,11 +25,11 @@ public class RenderingSystem extends IteratingSystem {
     private OrthographicCamera camera;
     private BitmapFont font;
     private final Entity player;
-    private final TextureStore textureStore;
+    private final Store<Texture> textureStore;
 
     @Inject
     public RenderingSystem(
-        TextureStore textureStore,
+        Store<Texture> textureStore,
         @Player Entity player
     ) {
         super(

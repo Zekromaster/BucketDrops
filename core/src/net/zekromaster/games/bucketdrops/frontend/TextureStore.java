@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
-public class TextureStore extends BasicStore<Texture> {
+public class TextureStore extends AbstractStore<Texture> {
 
     @Inject
     public TextureStore() {

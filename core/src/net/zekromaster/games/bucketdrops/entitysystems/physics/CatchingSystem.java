@@ -4,10 +4,11 @@ import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
+import com.badlogic.gdx.audio.Sound;
 import net.zekromaster.games.bucketdrops.annotations.BucketDropsSystem;
 import net.zekromaster.games.bucketdrops.components.*;
-import net.zekromaster.games.bucketdrops.frontend.SoundStore;
 import net.zekromaster.games.bucketdrops.annotations.Player;
+import net.zekromaster.games.bucketdrops.frontend.Store;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -17,12 +18,12 @@ public class CatchingSystem extends IteratingSystem {
 
     private final Engine engine;
     private final Entity player;
-    private final SoundStore soundStore;
+    private final Store<Sound> soundStore;
 
     @Inject
     public CatchingSystem(
         Engine engine,
-        SoundStore soundStore,
+        Store<Sound> soundStore,
         @Player Entity player
     )  {
         super(Family.all(CatchableComponent.class, PositionComponent.class).get());

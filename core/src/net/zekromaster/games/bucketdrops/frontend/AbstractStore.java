@@ -5,12 +5,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-public abstract class BasicStore<T> {
+abstract class AbstractStore<T> implements Store<T> {
 
     private final Map<String, T> map;
 
     @Inject
-    protected BasicStore() {
+    protected AbstractStore() {
         this.map = new LinkedHashMap<>();
     }
 
