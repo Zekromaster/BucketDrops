@@ -12,6 +12,7 @@ import javax.inject.Singleton;
 
 import net.zekromaster.games.bucketdrops.components.PositionComponent;
 import net.zekromaster.games.bucketdrops.components.RenderableComponent;
+import net.zekromaster.games.bucketdrops.frontend.TextureStore;
 import net.zekromaster.games.bucketdrops.gamestate.GameState;
 import net.zekromaster.games.bucketdrops.gamestate.ScoreComponent;
 
@@ -22,12 +23,15 @@ public class RenderingSystem extends IteratingSystem {
     private OrthographicCamera camera;
     private BitmapFont font;
     private final Entity gameState;
+    private final TextureStore textureStore;
 
     @Inject
     public RenderingSystem(
+        TextureStore textureStore,
         @GameState Entity gameState
     ) {
         super(Family.all(PositionComponent.class, RenderableComponent.class).get());
+        this.textureStore = textureStore;
         this.gameState = gameState;
     }
 
@@ -62,6 +66,6 @@ public class RenderingSystem extends IteratingSystem {
         final var texture = RenderableComponent.MAPPER.get(entity).texture();
         final var position = PositionComponent.MAPPER.get(entity);
 
-        batch.draw(texture, position.x(), position.y());
+        batch.draw(textureStore.get(texture), position.x(), position.y());
     }
 }

@@ -7,9 +7,9 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.Texture;
 import com.google.inject.Inject;
 import net.zekromaster.games.bucketdrops.components.*;
+import net.zekromaster.games.bucketdrops.frontend.TextureStore;
 import net.zekromaster.games.bucketdrops.gamestate.BucketInput;
 import net.zekromaster.games.bucketdrops.gamestate.Player;
 import java.util.Set;
@@ -19,16 +19,19 @@ public class BucketDrops extends ApplicationAdapter {
 	private final Set<EntitySystem> systems;
 	private final Entity player;
 	private Music music;
+	private final TextureStore textureStore;
 
 	@Inject
 	public BucketDrops(
 		Engine engine,
 		Set<EntitySystem> systems,
+		TextureStore textureStore,
 		@Player Entity player
 	) {
 		this.engine = engine;
 		this.systems = systems;
 		this.player = player;
+		this.textureStore = textureStore;
 	}
 
 	@Override
@@ -45,7 +48,7 @@ public class BucketDrops extends ApplicationAdapter {
 			200
 		));
 		player.add(new RenderableComponent(
-			new Texture(Gdx.files.internal("bucket.png"))
+			"bucket.png"
 		));
 		player.add(
 			new InputComponent(BucketInput.NONE)
@@ -64,15 +67,7 @@ public class BucketDrops extends ApplicationAdapter {
 	
 	@Override
 	public void dispose () {
-		engine.getEntitiesFor(
-			Family.all(RenderableComponent.class).get()
-		).forEach(
-			entity -> {
-				var renderableComponent = RenderableComponent.MAPPER.get(entity);
-				var texture = renderableComponent.texture();
-				texture.dispose();
-			}
-		);
+		textureStore.dispose();
 
 		engine.getEntitiesFor(
 			Family.all(HitComponent.class).get()
