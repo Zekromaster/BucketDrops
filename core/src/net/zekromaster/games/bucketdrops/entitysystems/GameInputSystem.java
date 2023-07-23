@@ -8,11 +8,14 @@ import com.badlogic.gdx.Input;
 import net.zekromaster.games.bucketdrops.components.InputComponent;
 import net.zekromaster.games.bucketdrops.components.PositionComponent;
 import net.zekromaster.games.bucketdrops.gamestate.BucketInput;
+
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton @BucketDropsSystem
 public class GameInputSystem extends IteratingSystem {
 
+    @Inject
     public GameInputSystem() {
         super(Family.all(InputComponent.class).get());
     }
