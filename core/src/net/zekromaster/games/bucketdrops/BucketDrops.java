@@ -3,12 +3,12 @@ package net.zekromaster.games.bucketdrops;
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.EntitySystem;
-import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.google.inject.Inject;
 import net.zekromaster.games.bucketdrops.components.*;
+import net.zekromaster.games.bucketdrops.frontend.SoundStore;
 import net.zekromaster.games.bucketdrops.frontend.TextureStore;
 import net.zekromaster.games.bucketdrops.gamestate.BucketInput;
 import net.zekromaster.games.bucketdrops.gamestate.Player;
@@ -20,18 +20,21 @@ public class BucketDrops extends ApplicationAdapter {
 	private final Entity player;
 	private Music music;
 	private final TextureStore textureStore;
+	private final SoundStore soundStore;
 
 	@Inject
 	public BucketDrops(
 		Engine engine,
 		Set<EntitySystem> systems,
 		TextureStore textureStore,
+		SoundStore soundStore,
 		@Player Entity player
 	) {
 		this.engine = engine;
 		this.systems = systems;
 		this.player = player;
 		this.textureStore = textureStore;
+		this.soundStore = soundStore;
 	}
 
 	@Override
@@ -68,17 +71,7 @@ public class BucketDrops extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		textureStore.dispose();
-
-		engine.getEntitiesFor(
-			Family.all(HitComponent.class).get()
-		).forEach(
-			entity -> {
-				var hitComponent = HitComponent.MAPPER.get(entity);
-				var sound = hitComponent.sound();
-				sound.dispose();
-			}
-		);
-
+		soundStore.dispose();
 		music.dispose();
 	}
 

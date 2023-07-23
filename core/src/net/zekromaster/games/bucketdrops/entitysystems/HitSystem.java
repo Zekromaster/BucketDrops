@@ -6,6 +6,7 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import net.zekromaster.games.bucketdrops.components.HitComponent;
 import net.zekromaster.games.bucketdrops.components.PositionComponent;
+import net.zekromaster.games.bucketdrops.frontend.SoundStore;
 import net.zekromaster.games.bucketdrops.gamestate.GameState;
 import net.zekromaster.games.bucketdrops.gamestate.Player;
 import net.zekromaster.games.bucketdrops.gamestate.ScoreComponent;
@@ -21,10 +22,12 @@ public class HitSystem extends IteratingSystem {
     private final Engine engine;
     private final Entity player;
     private final Entity gameState;
+    private final SoundStore soundStore;
 
     @Inject
     public HitSystem(
         Engine engine,
+        SoundStore soundStore,
         @Player Entity player,
         @GameState Entity gameState
     )  {
@@ -32,6 +35,7 @@ public class HitSystem extends IteratingSystem {
         this.engine = engine;
         this.player = player;
         this.gameState = gameState;
+        this.soundStore = soundStore;
     }
 
     @Override
@@ -50,7 +54,7 @@ public class HitSystem extends IteratingSystem {
                     )
                 );
             }
-            raindropEffect.sound().play();
+            soundStore.get(raindropEffect.sound()).play();
             engine.removeEntity(entity);
         }
     }

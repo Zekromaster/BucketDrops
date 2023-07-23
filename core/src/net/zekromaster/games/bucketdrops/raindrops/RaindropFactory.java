@@ -1,7 +1,6 @@
 package net.zekromaster.games.bucketdrops.raindrops;
 
 import com.badlogic.ashley.core.Entity;
-import com.badlogic.gdx.audio.Sound;
 import net.zekromaster.games.bucketdrops.components.FallingComponent;
 import net.zekromaster.games.bucketdrops.components.HitComponent;
 import net.zekromaster.games.bucketdrops.components.PositionComponent;
@@ -13,11 +12,9 @@ import javax.inject.Singleton;
 @Singleton
 public class RaindropFactory {
 
-    private final RaindropSoundCache raindropSoundCache;
-
     @Inject
     public RaindropFactory() {
-        this.raindropSoundCache = new RaindropSoundCache();
+        // Default blank constructor
     }
 
     private Entity createRaindrop(
@@ -27,7 +24,7 @@ public class RaindropFactory {
         String texture,
         HitEffect type,
         int value,
-        Sound sound
+        String sound
     ) {
         final var raindrop = new Entity();
         raindrop.add(
@@ -65,7 +62,7 @@ public class RaindropFactory {
             raindropType.texture(),
             raindropType.hitEffect(),
             raindropType.value(),
-            raindropSoundCache.get(raindropType)
+            raindropType.sound()
         );
     }
 
