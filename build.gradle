@@ -44,7 +44,7 @@ project(":desktop") {
 
 
     dependencies {
-        implementation project(":core")
+        api project(":core")
         api "javax.inject:javax.inject:1"
         api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
@@ -58,8 +58,8 @@ project(":core") {
     apply plugin: "java-library"
 
     dependencies {
-        implementation 'com.google.code.gson:gson:2.10.1'
-        implementation 'io.github.classgraph:classgraph:4.8.161'
+        api 'com.google.code.gson:gson:2.10.1'
+        api 'io.github.classgraph:classgraph:4.8.161'
         api "javax.inject:javax.inject:1"
         api "com.google.inject:guice:6.0.0"
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
